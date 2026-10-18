@@ -1,0 +1,137 @@
+{
+  "block": "95733573",
+  "block_hash": "0x484850823110fecf1c4ac8bbc9b5f6b49f1ca8878c88aec442414c88933ebb5e",
+  "block_time": 1792305707,
+  "rpcs": [
+    "https://polygon-bor-rpc.publicnode.com",
+    "https://polygon.drpc.org"
+  ],
+  "batches_contract": "0x8A4d7458dDe3023A3B24225D62087701A88b09DD",
+  "factory": "0x2359677E513Bc83106268514c5B2De3C29C849ea",
+  "counter": "1719",
+  "batches": [
+    {
+      "id": "1",
+      "pvId": "0",
+      "serial": "",
+      "quantity": "0",
+      "status": 0,
+      "owner": "0x7262A4e14Ced289795097DEaf32c845cAbaD2403",
+      "tco2": "0x0000000000000000000000000000000000000000",
+      "fractionalized": false,
+      "attrs": null
+    },
+    {
+      "id": "2",
+      "pvId": "1",
+      "serial": "8367-10851650-10851650-VCS-VCU-1423-VER-IN-1-1418-01012020-29022020-0",
+      "quantity": "1",
+      "status": 2,
+      "owner": "0x23AD766052aB79644eB850490d1666488094cCc2",
+      "tco2": "0x23AD766052aB79644eB850490d1666488094cCc2",
+      "fractionalized": true,
+      "attrs": {
+        "projectId": "VCS-1418",
+        "standard": "VCS",
+        "vintageName": "20200101",
+        "startTime": 1577836800,
+        "endTime": 1582934400,
+        "registry": ""
+      }
+    },
+    {
+      "id": "3",
+      "pvId": "42",
+      "serial": "7236-378945246-378945248-VCU-034-APX-IN-1-1190-01012018-31052018-0",
+      "quantity": "3",
+      "status": 2,
+      "owner": "0x25bdFF8dB8d80971935A7f38A0CF31DeC62f7696",
+      "tco2": "0x64de5C0A430B2b15c6a3A7566c3930e1cF9b22DF",
+      "fractionalized": false,
+      "attrs": {
+        "projectId": "VCS-1190",
+        "standard": "VCS",
+        "vintageName": "20180101",
+        "startTime": 1514764800,
+        "endTime": 1527724800,
+        "registry": ""
+      }
+    },
+    {
+      "id": "10",
+      "pvId": "5",
+      "serial": "11015-267732157-267732168-VCS-VCU-279-VER-TR-1-905-01012013-31122013-0",
+      "quantity": "12",
+      "status": 2,
+      "owner": "0xBD55BaAB51cae4E9e30387C447650eEF38419fBA",
+      "tco2": "0xBD55BaAB51cae4E9e30387C447650eEF38419fBA",
+      "fractionalized": true,
+      "attrs": {
+        "projectId": "VCS-905",
+        "standard": "VCS",
+        "vintageName": "2013",
+        "startTime": 1356998400,
+        "endTime": 1388448000,
+        "registry": ""
+      }
+    },
+    {
+      "id": "100",
+      "pvId": "45",
+      "serial": "10851-251565784-251569150-VCS-VCU-291-VER-VN-1-836-01032012-31122012-0",
+      "quantity": "3367",
+      "status": 2,
+      "owner": "0x1006B2Cf2872ebF1bb075642c16bC35816Ec18d5",
+      "tco2": "0x1006B2Cf2872ebF1bb075642c16bC35816Ec18d5",
+      "fractionalized": true,
+      "attrs": {
+        "projectId": "VCS-836",
+        "standard": "VCS",
+        "vintageName": "20120301",
+        "startTime": 1330560000,
+        "endTime": 1356912000,
+        "registry": ""
+      }
+    },
+    {
+      "id": "500",
+      "pvId": "0",
+      "serial": "",
+      "quantity": "0",
+      "status": 0,
+      "owner": "0xb41844e627F3d2b678273Ce8845af5207D041b1E",
+      "tco2": "0x0000000000000000000000000000000000000000",
+      "fractionalized": false,
+      "attrs": null
+    },
+    {
+      "id": "1000",
+      "pvId": "339",
+      "serial": "12078-382273659-382278658-VCS-VCU-304-VER-CN-1-191-01012009-31122009-0",
+      "quantity": "5000",
+      "status": 2,
+      "owner": "0xCcAcC6099debD9654C6814fCb800431Ef7549b10",
+      "tco2": "0xCcAcC6099debD9654C6814fCb800431Ef7549b10",
+      "fractionalized": true,
+      "attrs": {
+        "projectId": "VCS-191",
+        "standard": "VCS",
+        "vintageName": "2009",
+        "startTime": 1230768000,
+        "endTime": 1262217600,
+        "registry": ""
+      }
+    },
+    {
+      "id": "2000",
+      "pvId": "0",
+      "serial": "",
+      "quantity": "0",
+      "status": 0,
+      "owner": "ERR {\"code\":3,\"message\":\"execution reverted: ERC721: owner query for nonexistent tok",
+      "tco2": "0x0000000000000000000000000000000000000000",
+      "fractionalized": false,
+      "attrs": null
+    }
+  ]
+}

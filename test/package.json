@@ -1,0 +1,10 @@
+{
+  "name": "carboncheck-tests",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Feasibility, deploy, seed and on-chain verification scripts for CarbonCheck on GenLayer Studio Dev",
+  "dependencies": {
+    "genlayer-js": "2.0.0-rc.1"
+  }
+}
