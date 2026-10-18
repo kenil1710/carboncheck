@@ -1,0 +1,39 @@
+
+=== demo run 2026-10-18T07:24:56.070Z  CarbonCheckDemo 0xbc26F658AD3356B47B3530c0D1A530eCdEee3E41  OffsetGateDemo 0x87116893e197473b26c1c3d4Cc9dA6E40C935e24  CarbonCheck 0x73b0d7575660b847fAee31eC032D067CFFB23CF8 ===
+pinned Polygon block 95735295 (finalized on both RPCs)
+[2026-10-18T07:25:19.814Z] PASS verdict MATCHED (batch 1000, project 191, 5000 units)
+    demo -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",1000,95735295])
+    tx 0x3069ec903951dc9ee5a1674b0397b58df003a96e4932ff7720075d7e588ed70a status ACCEPTED 23.7s
+    => {"check_id":1,"code":"ALL_FIELDS_MATCH","verdict":"MATCHED","why":"Retired on Verra; 5000 units, project VCS-191, vintage 2009-01-01..2009-12-31 match the batch and its TCO2"}
+[2026-10-18T07:25:36.613Z] PASS verdict MISMATCH (batch 68: serial is project 1477, its TCO2 is VCS-981)
+    demo -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",68,95735295])
+    tx 0x164f08816f079850e056be3bef042ab4e91114c5c95db6fa784480e2920d7994 status ACCEPTED 16.8s
+    => {"check_id":2,"code":"SERIAL_PROJECT_MISMATCH","verdict":"MISMATCH","why":"the serial names project VCS-1477, the TCO2 says VCS-981"}
+[2026-10-18T07:26:13.990Z] PASS verdict UNVERIFIABLE BATCH_NOT_FRACTIONALIZED (batch 3: Confirmed, held by a wallet)
+    demo -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",3,95735295])
+    tx 0x8317a6fdd27fb7c82f9f0b10f3e32a81d5bde1d726aaa2428af5c4d4eceb55d9 status ACCEPTED 37.4s
+    => {"check_id":3,"code":"BATCH_NOT_FRACTIONALIZED","verdict":"UNVERIFIABLE","why":"the batch is held by 0x25bdff8db8d80971935a7f38a0cf31dec62f7696, not by its TCO2"}
+[2026-10-18T07:26:27.403Z] PASS refusal RATE_LIMITED (4th filing by one sender in 10 min)
+    demo -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",10,95735295])
+    tx 0x69f9025e85c36175f9d71b65dbf82d55bd44a9eb0312adbc0ab6a6d1109f168d status ACCEPTED 13.4s
+    => REVERTED REFUSED: RATE_LIMITED_UNTIL_1792308903
+[2026-10-18T07:26:50.655Z] PASS verdict MATCHED (batch 9, project 535, units 48565492..48567831)
+    demo2 -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",9,95735295])
+    tx 0x46eebcd7387ebc1d5cc501aa2bf30ce1da3cf8ff04cac114abd7c84a949303f3 status ACCEPTED 23.2s
+    => {"check_id":4,"code":"ALL_FIELDS_MATCH","verdict":"MATCHED","why":"Retired on Verra; 2340 units, project VCS-535, vintage 2014-01-01..2014-12-31 match the batch and its TCO2"}
+[2026-10-18T07:27:26.753Z] PASS verdict MATCHED (batch 23, project 535, units 48567832..48595400: TOUCHES batch 9, no overlap)
+    demo2 -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",23,95735295])
+    tx 0xb8baff64123be731045ee439a76e1ac3a4f49115d495a0f0a85e17b4f8d54ac7 status ACCEPTED 36.1s
+    => {"check_id":5,"code":"ALL_FIELDS_MATCH","verdict":"MATCHED","why":"Retired on Verra; 27569 units, project VCS-535, vintage 2014-01-01..2014-12-31 match the batch and its TCO2"}
+[2026-10-18T07:27:49.691Z] PASS demo range (project 1418, units 10851600..10851700, labelled; DEMO deployment only)
+    demo2 -> demo_claim_range([1418,10851600,10851700,"claimed on another registry"])
+    tx 0x1efadd749698ab461d79e5d08093cdbb632143cec7c7837245035434d31ba21b status ACCEPTED 22.9s
+    => {"claimed_id":4,"project":1418,"unit_end":10851700,"unit_start":10851600}
+[2026-10-18T07:28:26.392Z] PASS verdict DOUBLE_CLAIMED (batch 2, project 1418, unit 10851650 inside the claimed range)
+    demo2 -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",2,95735295])
+    tx 0x8d5612532116b11a42807b6d753b09f8bff074469a6794d5ae5032f9854af0d8 status ACCEPTED 36.7s
+    => {"check_id":6,"code":"RANGE_ALREADY_CLAIMED","verdict":"DOUBLE_CLAIMED","why":"project 1418 units 10851650..10851650 overlap units 10851600..10851700 already MATCHED for DEMO range 'claimed on another registry'"}
+[2026-10-18T07:28:49.589Z] PASS verdict UNVERIFIABLE VERRA_NOT_FOUND (batch 1213: exact serial not on Verra)
+    filer -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",1213,95735295])
+    tx 0xae9f36676c45114ef876f9b3d7771bd5b562e496ac43ff2d1cd35c26768f5bb7 status ACCEPTED 23.2s
+    => {"check_id":7,"code":"VERRA_NOT_FOUND","verdict":"UNVERIFIABLE","why":"the Verra registry lists no retired or active units with this exact serial"}

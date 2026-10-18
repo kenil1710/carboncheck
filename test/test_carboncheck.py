@@ -1221,6 +1221,59 @@ class TestGate(Base):
         self.assertEqual(cm.exception.msg, "REFUSED: REGISTRY_UNREADABLE")
 
 
+# ------------------------------------------------------------------ real data
+
+class TestRealRulings(unittest.TestCase):
+    """The contract's own decision functions over every real batch read in
+    the research (test/feasibility/deep.json) give the rulings documented in
+    FEASIBILITY.md."""
+
+    @classmethod
+    def setUpClass(cls):
+        import subprocess
+        import sys
+        out = subprocess.run([sys.executable, str(Path(__file__).parent / "feasibility" / "deep_report.py")],
+                             capture_output=True, text=True, check=True).stdout
+        cls.summary = out.split("\n\n")[0]
+        cls.rows = {int(l.split()[0]): (l.split()[1], l.split()[2]) for l in out.split("\n\n")[1].splitlines() if l.strip()}
+
+    def test_counts(self):
+        for line in ("MATCHED       ALL_FIELDS_MATCH           802", "MISMATCH      SERIAL_PROJECT_MISMATCH    2",
+                     "UNVERIFIABLE  VERRA_NOT_FOUND            5", "UNVERIFIABLE  SERIAL_UNPARSABLE          16",
+                     "UNVERIFIABLE  BATCH_NOT_FRACTIONALIZED   6", "UNVERIFIABLE  TCO2_NOT_FOUND             4"):
+            self.assertIn(line, self.summary)
+
+    def test_project_mismatches(self):
+        self.assertEqual(self.rows[68], ("MISMATCH", "SERIAL_PROJECT_MISMATCH"))
+        self.assertEqual(self.rows[180], ("MISMATCH", "SERIAL_PROJECT_MISMATCH"))
+
+    def test_not_found(self):
+        for b in (39, 594, 686, 874, 1213):
+            self.assertEqual(self.rows[b], ("UNVERIFIABLE", "VERRA_NOT_FOUND"))
+
+    def test_not_fractionalized(self):
+        for b in (3, 138, 446, 798, 833, 1001):
+            self.assertEqual(self.rows[b], ("UNVERIFIABLE", "BATCH_NOT_FRACTIONALIZED"))
+
+    def test_no_double_claim_among_confirmed_within_a_project(self):
+        deep = json.loads((Path(__file__).parent / "feasibility" / "deep.json").read_text())
+        rs = []
+        for b in deep["batches"].values():
+            if b["status"] == 2:
+                p = CC.parse_serial(b["serial"])
+                if p:
+                    rs.append((p["project"], p["start"], p["end"], b["id"]))
+        rs.sort()
+        hits = []
+        for i, a in enumerate(rs):
+            for b in rs[i + 1:]:
+                if b[0] != a[0] or b[1] > a[2]:
+                    break
+                hits.append((a[3], b[3]))
+        self.assertEqual(hits, [])
+        self.assertGreater(len(rs), 800)
+
+
 # ------------------------------------------------------------------ source
 
 class TestSource(unittest.TestCase):

@@ -9,3 +9,4 @@ test/.accounts.json
 test/.state*.json
 research_cache/
 scratch/
+test/*.log
