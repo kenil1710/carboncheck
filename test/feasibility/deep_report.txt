@@ -1,0 +1,42 @@
+batches with a serial: 947
+  MATCHED       ALL_FIELDS_MATCH           802
+  UNVERIFIABLE  BATCH_NOT_CONFIRMED        112
+  UNVERIFIABLE  SERIAL_UNPARSABLE          16
+  UNVERIFIABLE  BATCH_NOT_FRACTIONALIZED   6
+  UNVERIFIABLE  VERRA_NOT_FOUND            5
+  UNVERIFIABLE  TCO2_NOT_FOUND             4
+  MISMATCH      SERIAL_PROJECT_MISMATCH    2
+
+    3  UNVERIFIABLE  BATCH_NOT_FRACTIONALIZED   the batch is held by 0x25bdff8db8d80971935a7f38a0cf31dec62f7696, not by its TCO2
+    7  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+   39  UNVERIFIABLE  VERRA_NOT_FOUND            the Verra registry lists no retired or active units with this exact serial
+   68  MISMATCH      SERIAL_PROJECT_MISMATCH    the serial names project VCS-1477, the TCO2 says VCS-981
+  138  UNVERIFIABLE  BATCH_NOT_FRACTIONALIZED   the batch is held by 0x25bdff8db8d80971935a7f38a0cf31dec62f7696, not by its TCO2
+  140  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+  180  MISMATCH      SERIAL_PROJECT_MISMATCH    the serial names project VCS-10, the TCO2 says VCS-699
+  217  UNVERIFIABLE  TCO2_NOT_FOUND             the official factory maps this batch's vintage to no TCO2
+  446  UNVERIFIABLE  BATCH_NOT_FRACTIONALIZED   the batch is held by 0xdb97aa9b0c07254ef9e017641f5da271e5c31f35, not by its TCO2
+  564  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+  576  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+  594  UNVERIFIABLE  VERRA_NOT_FOUND            the Verra registry lists no retired or active units with this exact serial
+  686  UNVERIFIABLE  VERRA_NOT_FOUND            the Verra registry lists no retired or active units with this exact serial
+  698  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+  711  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+  712  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+  718  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+  719  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+  798  UNVERIFIABLE  BATCH_NOT_FRACTIONALIZED   the batch is held by 0xe2da2b0691fc74c3bbbe8305581308b0dc61ee30, not by its TCO2
+  833  UNVERIFIABLE  BATCH_NOT_FRACTIONALIZED   the batch is held by 0x63a32f1595a68e811496d820680b74a5cca303c5, not by its TCO2
+  874  UNVERIFIABLE  VERRA_NOT_FOUND            the Verra registry lists no retired or active units with this exact serial
+  890  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+  898  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+  910  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+  934  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+  965  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+  977  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+ 1001  UNVERIFIABLE  BATCH_NOT_FRACTIONALIZED   the batch is held by 0x10080bb62dafe52753af9d6bdd0bd14ac313bf43, not by its TCO2
+ 1163  UNVERIFIABLE  SERIAL_UNPARSABLE          the batch serial is not a well-formed Verra VCU serial
+ 1213  UNVERIFIABLE  VERRA_NOT_FOUND            the Verra registry lists no retired or active units with this exact serial
+ 1713  UNVERIFIABLE  TCO2_NOT_FOUND             the official factory maps this batch's vintage to no TCO2
+ 1715  UNVERIFIABLE  TCO2_NOT_FOUND             the official factory maps this batch's vintage to no TCO2
+ 1717  UNVERIFIABLE  TCO2_NOT_FOUND             the official factory maps this batch's vintage to no TCO2

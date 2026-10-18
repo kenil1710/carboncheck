@@ -2,6 +2,7 @@
  * Feasibility (d): for every batch with a serial, read owner, TCO2 (official
  * factory) and TCO2 getAttributes() raw at the scan block, then look the
  * serial(s) up in the Verra Retirements report (and Holdings if not retired).
+ *   node feasibility/deep.mjs 95733573
  * Writes feasibility/deep.json (raw hex + Verra entities) for analysis with the
  * contract's own parser (deep_report.py).
  */
@@ -13,7 +14,8 @@ const block = "0x" + BigInt(process.argv[2]).toString(16);
 const scan = JSON.parse(readFileSync(new URL("./scan.json", import.meta.url), "utf8"));
 const outPath = new URL("./deep.json", import.meta.url);
 const out = existsSync(outPath) ? JSON.parse(readFileSync(outPath, "utf8")) : { block: Number(BigInt(process.argv[2])), batches: {}, verra: {} };
-const cfg = JSON.parse(readFileSync(process.argv[3], "utf8"));
+// the public header values registry.verra.org ships to every browser
+const cfg = await (await fetch("https://registry.verra.org/config/environment.config.json")).json();
 const H = { "Content-Type": "application/json", Accept: "application/json", language: "en", standardId: "150000000000001", standardAcronym: "VCS", registry: "VERRA", appkey: cfg.uris.common.DEFAULT_HEADERS.appkey, application: "Markit", "X-XSRF-TOKEN": "t20", Cookie: "XSRF-TOKEN=t20" };
 const w = (n) => BigInt(n).toString(16).padStart(64, "0");
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -43,7 +45,7 @@ async function verra(report, serial) {
 const pvCache = {};
 const todo = scan.filter((r) => !r.error && r.serial && !out.batches[r.id]);
 let n = 0;
-for (const r of todo) {
+async function one(r) {
   const owner = await call(BATCHES, "0x6352211e" + w(r.id));
   if (!(r.pvId in pvCache)) {
     const t = await call(FACTORY, "0x5e813d3c" + w(r.pvId));
@@ -64,5 +66,7 @@ for (const r of todo) {
   }
   if (++n % 50 === 0) { writeFileSync(outPath, JSON.stringify(out) + "\n"); console.log("done", n, "/", todo.length); }
 }
+const queue = [...todo];
+await Promise.all(Array.from({ length: 6 }, async () => { while (queue.length) await one(queue.shift()); }));
 writeFileSync(outPath, JSON.stringify(out) + "\n");
 console.log("finished", Object.keys(out.batches).length, "batches,", Object.keys(out.verra).length, "serials");
