@@ -116,6 +116,7 @@ Every real batch from [docs/FEASIBILITY.md](docs/FEASIBILITY.md) and every real 
 | S48 | [1716](https://polygonscan.com/nft/0x8A4d7458dDe3023A3B24225D62087701A88b09DD/1716) | **UNVERIFIABLE** | BATCH_NOT_CONFIRMED: the batch is DetokenizationFinalized, not Confirmed | [#48](https://explorer-studio-dev.genlayer.com/tx/0x7ee87ef0505a625bc33d8f241150420a23141a70a46634ffe17850a911180116) |
 | S49 | [1714](https://polygonscan.com/nft/0x8A4d7458dDe3023A3B24225D62087701A88b09DD/1714) | **UNVERIFIABLE** | BATCH_NOT_CONFIRMED: the batch is RetirementFinalized, not Confirmed | [#49](https://explorer-studio-dev.genlayer.com/tx/0x2ee5f3def8ab5f8c805eda1de5084f1a9445c4f5a3f92a8b2a256649a6419beb) |
 | S50 | [2000](https://polygonscan.com/nft/0x8A4d7458dDe3023A3B24225D62087701A88b09DD/2000) | **UNVERIFIABLE** | BATCH_NOT_FOUND: the batch contract has no such token at this block | [#50](https://explorer-studio-dev.genlayer.com/tx/0x5b8b13e8afe6672a547100bcc0ac130265b9e96a86b947d0c7c6f813facde311) |
+| S51 | [1200](https://polygonscan.com/nft/0x8A4d7458dDe3023A3B24225D62087701A88b09DD/1200) | **UNVERIFIABLE** | BATCH_NOT_CONFIRMED: the batch is Pending, not Confirmed | [#51](https://explorer-studio-dev.genlayer.com/tx/0xf520c5e35ca47a3959612dffb4963c23bde7592ab19d98bed9559576aba2477a) |
 
 ## How to verify
 

@@ -11,7 +11,7 @@ CarbonCheck: does a tokenized carbon credit batch match real retired credits on 
 ## Description (809 / 1000 characters)
 
 ```
-CarbonCheck checks one Toucan carbon credit batch on Polygon against the public Verra registry. Code reads the batch on Polygon and the public Verra record, compares them field by field and decides; no model decides anything. Two RPCs must agree at one finalized block on the batch's serial, quantity and status and on its TCO2's project and vintage. Code parses the serial and requires a Verra record with that exact serial that is RETIRED with the same unit count, project and vintage. Verdicts: MATCHED, MISMATCH, DOUBLE_CLAIMED (units overlap a range already matched for another batch of the same project) or UNVERIFIABLE. Each verdict is final and as of its fetch time and block. Seeds: 50 real batches, 10 MATCHED, 2 MISMATCH, 38 UNVERIFIABLE. OffsetGate accepts an offset claim only on a fresh MATCHED.
+CarbonCheck checks one Toucan carbon credit batch on Polygon against the public Verra registry. Code reads the batch on Polygon and the public Verra record, compares them field by field and decides; no model decides anything. Two RPCs must agree at one finalized block on the batch's serial, quantity and status and on its TCO2's project and vintage. Code parses the serial and requires a Verra record with that exact serial that is RETIRED with the same unit count, project and vintage. Verdicts: MATCHED, MISMATCH, DOUBLE_CLAIMED (units overlap a range already matched for another batch of the same project) or UNVERIFIABLE. Each verdict is final and as of its fetch time and block. Seeds: 51 real batches, 10 MATCHED, 2 MISMATCH, 39 UNVERIFIABLE. OffsetGate accepts an offset claim only on a fresh MATCHED.
 ```
 
 ## Links

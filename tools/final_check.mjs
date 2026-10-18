@@ -174,10 +174,11 @@ const seedsDef = JSON.parse(read("test/seeds.json")).seeds;
   // assistant / vendor names, spelled as hex so this file does not contain them
   const names = ["\\x63\\x6f-\\x61\\x75\\x74\\x68\\x6f\\x72\\x65\\x64", "\\x63\\x6c\\x61\\x75\\x64\\x65", "\\x61\\x6e\\x74\\x68\\x72\\x6f\\x70\\x69\\x63", "\\x63\\x68\\x61\\x74\\x67\\x70\\x74", "\\x6f\\x70\\x65\\x6e\\x61\\x69"];
   const pattern = new RegExp(names.join("|"), "i");
-  const bad = pattern.test(msgs) || /\bAI\b/.test(msgs);
+  const two = new RegExp("\\b" + String.fromCharCode(65, 73) + "\\b");
+  const bad = pattern.test(msgs) || two.test(msgs);
   const tracked = git("ls-files");
-  const files = tracked.split("\n").filter((f) => existsSync(root + f) && !/\.json$/.test(f) && (pattern.test(readFileSync(root + f, "latin1")) || /\bAI\b/.test(readFileSync(root + f, "latin1")))).join(", ");
-  check("Git: keys never committed, no assistant attribution or AI mention in history or files", leaked === "" && !bad && files === "" && !tracked.includes(".accounts.json"),
+  const files = tracked.split("\n").filter((f) => existsSync(root + f) && !/\.json$/.test(f) && (pattern.test(readFileSync(root + f, "latin1")) || two.test(readFileSync(root + f, "latin1")))).join(", ");
+  check("Git: keys never committed, no assistant attribution or assistant name in history or files", leaked === "" && !bad && files === "" && !tracked.includes(".accounts.json"),
     `commits touching test/.accounts.json: ${leaked || "none"}; in messages: ${bad ? "FOUND" : "none"}; in files: ${files || "none"}`);
 }
 

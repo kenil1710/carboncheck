@@ -1,6 +1,6 @@
 # Seeds
 
-Every real batch from [FEASIBILITY.md](FEASIBILITY.md) and every real non-MATCHED case found among Confirmed Toucan batches, plus one batch of each non-Confirmed status and one id that does not exist, filed on the canonical CarbonCheck [`0x959Fe7E8Fb95Ae349895B1557AeF7916E3eCf413`](https://explorer-studio-dev.genlayer.com/address/0x959Fe7E8Fb95Ae349895B1557AeF7916E3eCf413), all at Polygon block [95735897](https://polygonscan.com/block/95735897). Every verdict is final. Mix: 10 MATCHED, 2 MISMATCH, 38 UNVERIFIABLE. The real data has no DOUBLE_CLAIMED case (FEASIBILITY.md, section d); the demo deployment shows that path ([demo-run.log](demo-run.log)).
+Every real batch from [FEASIBILITY.md](FEASIBILITY.md) and every real non-MATCHED case found among Confirmed Toucan batches, plus one batch of each non-Confirmed status and one id that does not exist, filed on the canonical CarbonCheck [`0x959Fe7E8Fb95Ae349895B1557AeF7916E3eCf413`](https://explorer-studio-dev.genlayer.com/address/0x959Fe7E8Fb95Ae349895B1557AeF7916E3eCf413), all at Polygon block [95735897](https://polygonscan.com/block/95735897). Every verdict is final. Mix: 10 MATCHED, 2 MISMATCH, 39 UNVERIFIABLE. The real data has no DOUBLE_CLAIMED case (FEASIBILITY.md, section d); the demo deployment shows that path ([demo-run.log](demo-run.log)).
 
 Each verdict is "as of" its fetch time and block. The raw records (`get_check` output) are in [seeds.onchain.json](seeds.onchain.json).
 
@@ -56,6 +56,7 @@ Each verdict is "as of" its fetch time and block. The raw records (`get_check` o
 | S48 | [1716](https://polygonscan.com/nft/0x8A4d7458dDe3023A3B24225D62087701A88b09DD/1716) | **UNVERIFIABLE** | BATCH_NOT_CONFIRMED: the batch is DetokenizationFinalized, not Confirmed | [#48](https://explorer-studio-dev.genlayer.com/tx/0x7ee87ef0505a625bc33d8f241150420a23141a70a46634ffe17850a911180116) |
 | S49 | [1714](https://polygonscan.com/nft/0x8A4d7458dDe3023A3B24225D62087701A88b09DD/1714) | **UNVERIFIABLE** | BATCH_NOT_CONFIRMED: the batch is RetirementFinalized, not Confirmed | [#49](https://explorer-studio-dev.genlayer.com/tx/0x2ee5f3def8ab5f8c805eda1de5084f1a9445c4f5a3f92a8b2a256649a6419beb) |
 | S50 | [2000](https://polygonscan.com/nft/0x8A4d7458dDe3023A3B24225D62087701A88b09DD/2000) | **UNVERIFIABLE** | BATCH_NOT_FOUND: the batch contract has no such token at this block | [#50](https://explorer-studio-dev.genlayer.com/tx/0x5b8b13e8afe6672a547100bcc0ac130265b9e96a86b947d0c7c6f813facde311) |
+| S51 | [1200](https://polygonscan.com/nft/0x8A4d7458dDe3023A3B24225D62087701A88b09DD/1200) | **UNVERIFIABLE** | BATCH_NOT_CONFIRMED: the batch is Pending, not Confirmed | [#51](https://explorer-studio-dev.genlayer.com/tx/0xf520c5e35ca47a3959612dffb4963c23bde7592ab19d98bed9559576aba2477a) |
 
 ## S01: batch 2, MATCHED
 
@@ -706,3 +707,16 @@ Each verdict is "as of" its fetch time and block. The raw records (`get_check` o
 - As of: 2026-10-18T08:21:15Z (fetch) and block 95735897
 - Research (block 95733573): UNVERIFIABLE / `BATCH_NOT_FOUND` (same)
 - On chain: CarbonCheck `0x959Fe7E8Fb95Ae349895B1557AeF7916E3eCf413` check #50, tx [`0x5b8b13e8afe6672a547100bcc0ac130265b9e96a86b947d0c7c6f813facde311`](https://explorer-studio-dev.genlayer.com/tx/0x5b8b13e8afe6672a547100bcc0ac130265b9e96a86b947d0c7c6f813facde311), filed by `0x6d15df503988c08c67dc5f0c9e635ac98cf5a761`
+
+## S51: batch 1200, UNVERIFIABLE
+
+- Why chosen: real non-MATCHED case: Pending, empty serial (FEASIBILITY a)
+- Batch: [Polygonscan NFT 1200](https://polygonscan.com/nft/0x8A4d7458dDe3023A3B24225D62087701A88b09DD/1200), status Pending, quantity 0, held by `0x12206d64ffd69398789d5ae5d294131e77040a63`
+- TCO2: (none)
+- Serial: `(empty)`
+- Polygon block: [95735897](https://polygonscan.com/block/95735897), hash `0x0d8e1cdc13340c565909a87e438de12a928800b4d678113a361e245e5ff4eb2a`, time 2026-10-18T07:39:53.000Z
+- Verra (exact serial, https://registry.verra.org/verra/public/program/VCS, Retirements report): not looked up (the check ended before the Verra stage)
+- Verdict: **UNVERIFIABLE** / `BATCH_NOT_CONFIRMED`: the batch is Pending, not Confirmed
+- As of: 2026-10-18T08:32:50Z (fetch) and block 95735897
+- Research (block 95733573): UNVERIFIABLE / `BATCH_NOT_CONFIRMED` (same)
+- On chain: CarbonCheck `0x959Fe7E8Fb95Ae349895B1557AeF7916E3eCf413` check #51, tx [`0xf520c5e35ca47a3959612dffb4963c23bde7592ab19d98bed9559576aba2477a`](https://explorer-studio-dev.genlayer.com/tx/0xf520c5e35ca47a3959612dffb4963c23bde7592ab19d98bed9559576aba2477a), filed by `0xb05c93bfb30b59cf558df6655aa79123c8498ade`

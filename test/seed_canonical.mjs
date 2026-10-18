@@ -50,7 +50,7 @@ for (let i = 0; i < seeds.length; i++) {
   const latest = async (blk) => (await onChain()).filter((c) => c.batch_id === s.batch && c.block === blk).pop();
   let blk = BLOCK, found = await latest(blk), tx = known[s.id]?.tx ?? null;
   if (!found) {
-    const { send } = connect({ address, role: roles[i] });
+    const { send } = connect({ address, role: roles[i] ?? "s12" });
     const r = await send("file_check", [BATCHES, s.batch, blk]);
     console.log(`${s.id} batch ${s.batch}: ${r.status} ok=${r.ok} ${r.seconds}s ${r.hash}`, JSON.stringify(returnedJson(r) ?? r.revertReason?.slice(0, 200)));
     tx = r.hash;

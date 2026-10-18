@@ -350,6 +350,13 @@
    "expect": "UNVERIFIABLE",
    "expect_code": "BATCH_NOT_FOUND",
    "why_chosen": "token id above batchTokenCounter (1719)"
+  },
+  {
+   "id": "S51",
+   "batch": 1200,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "BATCH_NOT_CONFIRMED",
+   "why_chosen": "real non-MATCHED case: Pending, empty serial (FEASIBILITY a)"
   }
  ]
 }
