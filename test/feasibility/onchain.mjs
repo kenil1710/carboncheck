@@ -7,7 +7,7 @@
 import { encodeFunctionData, decodeFunctionResult, parseAbi } from "viem";
 import { writeFileSync } from "node:fs";
 
-export const RPCS = ["https://polygon-bor-rpc.publicnode.com", "https://polygon.drpc.org"];
+export const RPCS = ["https://polygon.drpc.org", "https://gateway.tenderly.co/public/polygon"];
 export const BATCHES = "0x8A4d7458dDe3023A3B24225D62087701A88b09DD";
 export const FACTORY = "0x2359677E513Bc83106268514c5B2De3C29C849ea";
 const abi = parseAbi([
