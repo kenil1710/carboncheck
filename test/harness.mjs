@@ -1,5 +1,5 @@
 /**
- * Shared helpers for the AsVoted integration scripts (Studio Dev).
+ * Shared helpers for the CarbonCheck integration scripts (Studio Dev).
  *
  * Two of these exist because a GenLayer network does not report success in one
  * place, and reading the wrong place turns every failure into a silent pass.

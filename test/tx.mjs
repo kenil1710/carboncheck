@@ -1,8 +1,8 @@
 /**
  * One write or view against a deployed contract, with fee estimation and the
  * settle-aware outcome from harness.mjs.
- *   node tx.mjs --set=final --c=ExecReader --fn=read_execution --role=filer --args='["ethereum","0x..","0x..",27]' [--value=100000000000000000]
- *   node tx.mjs --set=final --c=AsVotedRegistry --view=get_stats --args='[]'
+ *   node tx.mjs --set=final --c=CarbonCheck --fn=file_check --role=filer --args='["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",1000,95733573]'
+ *   node tx.mjs --set=final --c=CarbonCheck --view=get_check --args='[1]'
  */
 import { readFileSync } from "node:fs";
 import { connect, argOf } from "./harness.mjs";
