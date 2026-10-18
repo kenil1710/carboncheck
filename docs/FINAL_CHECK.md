@@ -1,17 +1,16 @@
 # Final check
 
-Run 2026-10-18T08:32:18.712Z by `tools/final_check.mjs` against commit `0d5a431359` and Studio Dev. **9/11 PASS.**
+Run 2026-10-18T08:41:37.851Z by `tools/final_check.mjs` against commit `e204bd4135` and Studio Dev. **10/11 PASS.**
 
 ## PASS: Source match: gen_getContractCode byte-identical to contracts/ at HEAD for every deployment, all from one commit, contracts/ unchanged since
 
 ```
-HEAD 0d5a4313596b4fde316d6340cd49312c0871c02f
+HEAD e204bd4135982d95486189674c678264a001664c
 CarbonCheck          0x959Fe7E8Fb95Ae349895B1557AeF7916E3eCf413  chain sha256 25e652965e1fc4c9940d06f29d1c56bfbd6d632ad66efcd29065015159936996  identical to HEAD  matches deployments.json  deploy commit 93c92dbc03  contracts/ unchanged since
 CarbonCheckDemo      0x019B01259A30467de7bdbFD2125e3d3CE00B08a1  chain sha256 25e652965e1fc4c9940d06f29d1c56bfbd6d632ad66efcd29065015159936996  identical to HEAD  matches deployments.json  deploy commit 93c92dbc03  contracts/ unchanged since
 OffsetGate           0x7BF9f7b62f65214f9B65647799507FC9A452409B  chain sha256 26923fbc428e4a6939c07fbd57a0ec22b5c15bc271b8cd4c28894ede6025303c  identical to HEAD  matches deployments.json  deploy commit 93c92dbc03  contracts/ unchanged since
 OffsetGateDemo       0x98eF81498Dc820fAb2Db56F112573a6256688348  chain sha256 26923fbc428e4a6939c07fbd57a0ec22b5c15bc271b8cd4c28894ede6025303c  identical to HEAD  matches deployments.json  deploy commit 93c92dbc03  contracts/ unchanged since
 all deployments from one commit: 93c92dbc03666bf5fbbb1e5825c73b3f1d835a79
-GenLayer RPC error (gen_getContractCode): fetch failed
 ```
 
 ## PASS: Seeds: every seed filed on the canonical contract at one Polygon block, final (tx FINALIZED), verdict matching docs/seeds.onchain.json
@@ -67,25 +66,26 @@ S47 batch 244 check #47 UNVERIFIABLE/BATCH_NOT_CONFIRMED at block 95735897 (rese
 S48 batch 1716 check #48 UNVERIFIABLE/BATCH_NOT_CONFIRMED at block 95735897 (research: UNVERIFIABLE/BATCH_NOT_CONFIRMED) tx 0x7ee87ef050 FINALIZED ok
 S49 batch 1714 check #49 UNVERIFIABLE/BATCH_NOT_CONFIRMED at block 95735897 (research: UNVERIFIABLE/BATCH_NOT_CONFIRMED) tx 0x2ee5f3def8 FINALIZED ok
 S50 batch 2000 check #50 UNVERIFIABLE/BATCH_NOT_FOUND at block 95735897 (research: UNVERIFIABLE/BATCH_NOT_FOUND) tx 0x5b8b13e8af FINALIZED ok
+S51 batch 1200 check #51 UNVERIFIABLE/BATCH_NOT_CONFIRMED at block 95735897 (research: UNVERIFIABLE/BATCH_NOT_CONFIRMED) tx 0xf520c5e35c FINALIZED ok
 ```
 
-## FAIL: Seeds cover every batch in FEASIBILITY.md and every real non-MATCHED Confirmed batch the research found
+## PASS: Seeds cover every batch in FEASIBILITY.md and every real non-MATCHED Confirmed batch the research found
 
 ```
-FEASIBILITY batches: 26, missing: 1200
+FEASIBILITY batches: 26, missing: none
 non-MATCHED Confirmed batches in deep_report.txt: 33, missing: none
 ```
 
 ## PASS: Seed verdicts equal the research ruling at block 95733573 (or the difference is explained in SEEDS.md)
 
 ```
-50/50 identical; mix {"MATCHED":10,"MISMATCH":2,"UNVERIFIABLE":38}
+51/51 identical; mix {"MATCHED":10,"MISMATCH":2,"UNVERIFIABLE":39}
 ```
 
 ## PASS: Canonical counters equal the filed checks (checks = matched + mismatch + double_claimed + unverifiable)
 
 ```
-{"checks":50,"claimed_ranges":10,"double_claimed":0,"matched":10,"mismatch":2,"mode":"CANONICAL","rate_max":5,"rate_window":3600,"unverifiable":38,"version":"1.0.0"}
+{"checks":51,"claimed_ranges":10,"double_claimed":0,"matched":10,"mismatch":2,"mode":"CANONICAL","rate_max":5,"rate_window":3600,"unverifiable":39,"version":"1.0.0"}
 ```
 
 ## PASS: Demo: every path on chain (each verdict incl. DOUBLE_CLAIMED via overlap, each refusal, gate allow + refuse + stale), all expectations met
@@ -105,14 +105,14 @@ unknown addresses: none
 ## PASS: Every link in README and docs answers HTTP 200, or is marked POST-only / browser-only
 
 ```
-174 links answered GET; failing: none
+176 links answered GET; failing: none
 marked POST-only (RPC / registry API endpoints, not pages): https://studio-dev.genlayer.com/api, https://polygon.drpc.org, https://gateway.tenderly.co/public/polygon, https://prod-us.api.platts.com/ci-raas-prod/raas-report-api/es/public/retirements/publicReportPageSearch, https://prod-us.api.platts.com/ci-raas-prod/raas-report-api/es/public/holdings/publicReportPageSearch
 ```
 
 ## PASS: All offline tests pass (200+)
 
 ```
-Ran 373 tests in 0.287s  OK
+Ran 373 tests in 0.289s  OK
 ```
 
 ## PASS: Docs: README sections (Scope, Rules, Addresses, How to verify), no hygiene-list word in README or docs/, SUBMISSION plain ASCII, title <= 100 and description <= 1000 with true counts, says code decides and no model does
@@ -121,8 +121,8 @@ Ran 373 tests in 0.287s  OK
 missing: none; files with a listed word: none (8 files); SUBMISSION ASCII: true; counts: Title 86/100, Description 809/1000; plain statement: true
 ```
 
-## FAIL: Git: keys never committed, no assistant attribution or AI mention in history or files
+## FAIL: Git: keys never committed, no assistant attribution or assistant name in history or files
 
 ```
-commits touching test/.accounts.json: none; in messages: none; in files: tools/final_check.mjs
+commits touching test/.accounts.json: none; in messages: none; in files: docs/FINAL_CHECK.md
 ```
