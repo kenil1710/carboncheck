@@ -10,6 +10,7 @@
  *   demo       drives the demo deployment
  *   demo2      a second demo sender (duplicate / rate-limit paths)
  *   probe      throwaway GenVM probes
+ *   s01..s12   canonical seed filers (5 filings per sender per hour)
  */
 import { createAccount } from "genlayer-js";
 import { randomBytes } from "node:crypto";
@@ -17,7 +18,8 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 
 const target = new URL("./.accounts.json", import.meta.url);
 const force = process.argv.includes("--force");
-const ROLES = ["deployer", "filer", "filer2", "filer3", "filer4", "demo", "demo2", "probe"];
+const ROLES = ["deployer", "filer", "filer2", "filer3", "filer4", "demo", "demo2", "probe",
+  ...Array.from({ length: 12 }, (_, i) => "s" + String(i + 1).padStart(2, "0"))];
 const existing = existsSync(target) && !force ? JSON.parse(readFileSync(target, "utf8")) : {};
 const out = {};
 for (const role of ROLES) {

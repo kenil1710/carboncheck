@@ -340,7 +340,7 @@ class A8DocsTruth(unittest.TestCase):
 
     def test_every_reason_code_documented(self):
         t = self.read("docs/RULES.md")
-        codes = [v for k, v in vars(CC).items() if re.match(r"^(C|M|U)_[A-Z_]+$", k) and isinstance(v, str)]
+        codes = [v for k, v in vars(CC).items() if re.match(r"^(C|M|U)_[A-Z0-9_]+$", k) and isinstance(v, str)]
         missing = [c for c in codes if "`" + c + "`" not in t]
         self.assertEqual(missing, [])
 

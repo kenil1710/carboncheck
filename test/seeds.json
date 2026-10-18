@@ -1,0 +1,355 @@
+{
+ "note": "Expected verdicts are what the contract's code ruled on the raw data at Polygon block 95733573 (test/feasibility/deep_report.txt). Verra is live; the on-chain verdict is as of its own fetch.",
+ "seeds": [
+  {
+   "id": "S01",
+   "batch": 2,
+   "expect": "MATCHED",
+   "expect_code": "ALL_FIELDS_MATCH",
+   "why_chosen": "Confirmed, fractionalized, retired on Verra (FEASIBILITY a)"
+  },
+  {
+   "id": "S02",
+   "batch": 9,
+   "expect": "MATCHED",
+   "expect_code": "ALL_FIELDS_MATCH",
+   "why_chosen": "Confirmed, fractionalized, retired on Verra (FEASIBILITY a)"
+  },
+  {
+   "id": "S03",
+   "batch": 10,
+   "expect": "MATCHED",
+   "expect_code": "ALL_FIELDS_MATCH",
+   "why_chosen": "Confirmed, fractionalized, retired on Verra (FEASIBILITY a)"
+  },
+  {
+   "id": "S04",
+   "batch": 23,
+   "expect": "MATCHED",
+   "expect_code": "ALL_FIELDS_MATCH",
+   "why_chosen": "Confirmed, fractionalized, retired on Verra (FEASIBILITY a)"
+  },
+  {
+   "id": "S05",
+   "batch": 100,
+   "expect": "MATCHED",
+   "expect_code": "ALL_FIELDS_MATCH",
+   "why_chosen": "Confirmed, fractionalized, retired on Verra (FEASIBILITY a)"
+  },
+  {
+   "id": "S06",
+   "batch": 256,
+   "expect": "MATCHED",
+   "expect_code": "ALL_FIELDS_MATCH",
+   "why_chosen": "Confirmed, fractionalized, retired on Verra (FEASIBILITY a)"
+  },
+  {
+   "id": "S07",
+   "batch": 259,
+   "expect": "MATCHED",
+   "expect_code": "ALL_FIELDS_MATCH",
+   "why_chosen": "Confirmed, fractionalized, retired on Verra (FEASIBILITY a)"
+  },
+  {
+   "id": "S08",
+   "batch": 313,
+   "expect": "MATCHED",
+   "expect_code": "ALL_FIELDS_MATCH",
+   "why_chosen": "Confirmed, fractionalized, retired on Verra (FEASIBILITY a)"
+  },
+  {
+   "id": "S09",
+   "batch": 889,
+   "expect": "MATCHED",
+   "expect_code": "ALL_FIELDS_MATCH",
+   "why_chosen": "Confirmed, fractionalized, retired on Verra (FEASIBILITY a)"
+  },
+  {
+   "id": "S10",
+   "batch": 1000,
+   "expect": "MATCHED",
+   "expect_code": "ALL_FIELDS_MATCH",
+   "why_chosen": "Confirmed, fractionalized, retired on Verra (FEASIBILITY a)"
+  },
+  {
+   "id": "S11",
+   "batch": 68,
+   "expect": "MISMATCH",
+   "expect_code": "SERIAL_PROJECT_MISMATCH",
+   "why_chosen": "real non-MATCHED case: serial project differs from its TCO2"
+  },
+  {
+   "id": "S12",
+   "batch": 180,
+   "expect": "MISMATCH",
+   "expect_code": "SERIAL_PROJECT_MISMATCH",
+   "why_chosen": "real non-MATCHED case: serial project differs from its TCO2"
+  },
+  {
+   "id": "S13",
+   "batch": 39,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "VERRA_NOT_FOUND",
+   "why_chosen": "real non-MATCHED case: exact serial not on Verra"
+  },
+  {
+   "id": "S14",
+   "batch": 594,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "VERRA_NOT_FOUND",
+   "why_chosen": "real non-MATCHED case: exact serial not on Verra"
+  },
+  {
+   "id": "S15",
+   "batch": 686,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "VERRA_NOT_FOUND",
+   "why_chosen": "real non-MATCHED case: exact serial not on Verra"
+  },
+  {
+   "id": "S16",
+   "batch": 874,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "VERRA_NOT_FOUND",
+   "why_chosen": "real non-MATCHED case: exact serial not on Verra"
+  },
+  {
+   "id": "S17",
+   "batch": 1213,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "VERRA_NOT_FOUND",
+   "why_chosen": "real non-MATCHED case: exact serial not on Verra"
+  },
+  {
+   "id": "S18",
+   "batch": 3,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "BATCH_NOT_FRACTIONALIZED",
+   "why_chosen": "real non-MATCHED case: Confirmed but held by a wallet"
+  },
+  {
+   "id": "S19",
+   "batch": 138,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "BATCH_NOT_FRACTIONALIZED",
+   "why_chosen": "real non-MATCHED case: Confirmed but held by a wallet"
+  },
+  {
+   "id": "S20",
+   "batch": 446,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "BATCH_NOT_FRACTIONALIZED",
+   "why_chosen": "real non-MATCHED case: Confirmed but held by a wallet"
+  },
+  {
+   "id": "S21",
+   "batch": 798,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "BATCH_NOT_FRACTIONALIZED",
+   "why_chosen": "real non-MATCHED case: Confirmed but held by a wallet"
+  },
+  {
+   "id": "S22",
+   "batch": 833,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "BATCH_NOT_FRACTIONALIZED",
+   "why_chosen": "real non-MATCHED case: Confirmed but held by a wallet"
+  },
+  {
+   "id": "S23",
+   "batch": 1001,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "BATCH_NOT_FRACTIONALIZED",
+   "why_chosen": "real non-MATCHED case: Confirmed but held by a wallet"
+  },
+  {
+   "id": "S24",
+   "batch": 217,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "TCO2_NOT_FOUND",
+   "why_chosen": "real non-MATCHED case: no TCO2 from the Verra factory"
+  },
+  {
+   "id": "S25",
+   "batch": 1713,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "TCO2_NOT_FOUND",
+   "why_chosen": "real non-MATCHED case: no TCO2 from the Verra factory"
+  },
+  {
+   "id": "S26",
+   "batch": 1715,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "TCO2_NOT_FOUND",
+   "why_chosen": "real non-MATCHED case: no TCO2 from the Verra factory"
+  },
+  {
+   "id": "S27",
+   "batch": 1717,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "TCO2_NOT_FOUND",
+   "why_chosen": "real non-MATCHED case: no TCO2 from the Verra factory"
+  },
+  {
+   "id": "S28",
+   "batch": 7,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S29",
+   "batch": 140,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S30",
+   "batch": 564,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S31",
+   "batch": 576,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S32",
+   "batch": 698,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S33",
+   "batch": 711,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S34",
+   "batch": 712,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S35",
+   "batch": 718,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S36",
+   "batch": 719,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S37",
+   "batch": 890,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S38",
+   "batch": 898,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S39",
+   "batch": 910,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S40",
+   "batch": 934,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S41",
+   "batch": 965,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S42",
+   "batch": 977,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S43",
+   "batch": 1163,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: serial field holds several serials"
+  },
+  {
+   "id": "S44",
+   "batch": 199,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "SERIAL_UNPARSABLE",
+   "why_chosen": "real non-MATCHED case: Confirmed with an empty serial"
+  },
+  {
+   "id": "S45",
+   "batch": 1,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "BATCH_NOT_CONFIRMED",
+   "why_chosen": "real non-MATCHED case: Pending, empty serial"
+  },
+  {
+   "id": "S46",
+   "batch": 1350,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "BATCH_NOT_CONFIRMED",
+   "why_chosen": "real non-MATCHED case: Pending, serial starts with the text \\u0031"
+  },
+  {
+   "id": "S47",
+   "batch": 244,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "BATCH_NOT_CONFIRMED",
+   "why_chosen": "real non-MATCHED case: Rejected, quantity 5e18"
+  },
+  {
+   "id": "S48",
+   "batch": 1716,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "BATCH_NOT_CONFIRMED",
+   "why_chosen": "real non-MATCHED case: DetokenizationFinalized (Puro)"
+  },
+  {
+   "id": "S49",
+   "batch": 1714,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "BATCH_NOT_CONFIRMED",
+   "why_chosen": "real non-MATCHED case: RetirementFinalized (Puro)"
+  },
+  {
+   "id": "S50",
+   "batch": 2000,
+   "expect": "UNVERIFIABLE",
+   "expect_code": "BATCH_NOT_FOUND",
+   "why_chosen": "token id above batchTokenCounter (1719)"
+  }
+ ]
+}
