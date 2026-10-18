@@ -1,0 +1,70 @@
+{
+  "network": "studiodev",
+  "chain_id": 61997,
+  "rpc": "https://studio-dev.genlayer.com/api",
+  "explorer": "https://explorer-studio-dev.genlayer.com/",
+  "contracts": {
+    "CarbonCheck": {
+      "address": "0x73b0d7575660b847fAee31eC032D067CFFB23CF8",
+      "deploy_tx": "0xc59b46505cf73cd411bd766c96866e65c2d9ec3fce308e50ebe3068fe1d76c0e",
+      "file": "contracts/CarbonCheck.py",
+      "commit": "4e6835bf690591188abc3e5b9d76f5f86e1e279d",
+      "bytes": 42375,
+      "sha256": "34becdb322e9c22413c2d2d646a407bcbd408c1affb2518721c4cabd8097af7d",
+      "constructor_args": [
+        "CANONICAL",
+        5,
+        3600
+      ],
+      "deployer": "0x6E9586761dee0B7ccefd08556Db09Fc150a4Fd93",
+      "deployed_at": "2026-10-18T07:24:06.107Z",
+      "mode": "CANONICAL"
+    },
+    "CarbonCheckDemo": {
+      "address": "0xbc26F658AD3356B47B3530c0D1A530eCdEee3E41",
+      "deploy_tx": "0x35f46bea38584937de7d4f056763e4de0540e47e5901d38b67d941d2a1f095b8",
+      "file": "contracts/CarbonCheck.py",
+      "commit": "4e6835bf690591188abc3e5b9d76f5f86e1e279d",
+      "bytes": 42375,
+      "sha256": "34becdb322e9c22413c2d2d646a407bcbd408c1affb2518721c4cabd8097af7d",
+      "constructor_args": [
+        "DEMO",
+        3,
+        600
+      ],
+      "deployer": "0x6E9586761dee0B7ccefd08556Db09Fc150a4Fd93",
+      "deployed_at": "2026-10-18T07:24:15.879Z",
+      "mode": "DEMO"
+    },
+    "OffsetGate": {
+      "address": "0xB78802fC27C977bE35faf92b4AF1e38E1C569f91",
+      "deploy_tx": "0x9e66a70b60bf41fd94714c3bbf3d3e6b8d3c71b743722dfd39b8693f0435af49",
+      "file": "contracts/OffsetGate.py",
+      "commit": "4e6835bf690591188abc3e5b9d76f5f86e1e279d",
+      "bytes": 6756,
+      "sha256": "26923fbc428e4a6939c07fbd57a0ec22b5c15bc271b8cd4c28894ede6025303c",
+      "constructor_args": [
+        "0x73b0d7575660b847fAee31eC032D067CFFB23CF8",
+        2592000
+      ],
+      "deployer": "0x6E9586761dee0B7ccefd08556Db09Fc150a4Fd93",
+      "deployed_at": "2026-10-18T07:24:21.658Z",
+      "mode": "CANONICAL"
+    },
+    "OffsetGateDemo": {
+      "address": "0x87116893e197473b26c1c3d4Cc9dA6E40C935e24",
+      "deploy_tx": "0x8d10d8c2c95190650ec940b98e66de4efc693a7b92c97abbb72e6e4b7f612b38",
+      "file": "contracts/OffsetGate.py",
+      "commit": "4e6835bf690591188abc3e5b9d76f5f86e1e279d",
+      "bytes": 6756,
+      "sha256": "26923fbc428e4a6939c07fbd57a0ec22b5c15bc271b8cd4c28894ede6025303c",
+      "constructor_args": [
+        "0xbc26F658AD3356B47B3530c0D1A530eCdEee3E41",
+        600
+      ],
+      "deployer": "0x6E9586761dee0B7ccefd08556Db09Fc150a4Fd93",
+      "deployed_at": "2026-10-18T07:24:30.670Z",
+      "mode": "DEMO"
+    }
+  }
+}
