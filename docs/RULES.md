@@ -131,13 +131,13 @@ overlap  iff  same project  and  first_a <= last_b  and  first_b <= last_a
 
 Verra is a live registry and a batch's on-chain state can change. Each check stores `filed_at` / `as_of` (the transaction's time, which is when every validator fetched Verra) and the Polygon `block`, `block_hash` and `block_time` it read. A verdict says what the two sources said at that moment, and nothing about later. `recheck(check_id, block)` files a fresh check of the same batch at another block and is subject to the same door rules.
 
-`latest_verdict(batch)` returns the filing that read the **newest Polygon block** for the batch (one filing per batch and block, so there are no ties). A filing pinned to an older block can never mask a newer one, whatever order they were filed in. `is_matched(batch)` is `latest_verdict(batch).verdict == "MATCHED"`.
+`latest_verdict(batch)` returns the filing that read the **newest Polygon block** for the batch (one filing per batch and block, so there are no ties). A filing pinned to an older block can never mask a newer one, whatever order they were filed in. A filing that read no block (a transport code, see rule 7, including `BLOCK_NOT_FINALIZED`) is skipped as long as any filing of the batch did read its block, so nobody can mask a verdict by filing at a block that does not exist yet or while a source is down. `is_matched(batch)` is `latest_verdict(batch).verdict == "MATCHED"`.
 
 ## Rule 7: no funds, free filing, every filing ends
 
 - The contract holds no funds, has no owner and no setter. Filing is free apart from network fees.
 - Counters (`get_stats`) and the rate-limit count change only after all checks pass, in the same transaction that stores the verdict.
-- Every accepted filing ends in a stored verdict. Each network read is retried 3 times; a read that still fails ends UNVERIFIABLE with a transport code (`RPC_UNAVAILABLE`, `RPC_DISAGREE`, `BLOCK_NOT_FINALIZED`, `VERRA_UNAVAILABLE`, `VERRA_UNREADABLE`, `INTERNAL`). Validators accept a leader's UNVERIFIABLE with one of these codes without reproducing it: it asserts nothing, indexes no range and opens no gate. Every other result is recomputed by each validator in full and must be identical.
+- Every accepted filing ends in a stored verdict. Each network read is retried 3 times; a read that still fails ends UNVERIFIABLE with a transport code (`RPC_UNAVAILABLE`, `RPC_DISAGREE`, `BLOCK_NOT_FINALIZED`, `VERRA_UNAVAILABLE`, `VERRA_UNREADABLE`, `INTERNAL`). Validators accept a leader's UNVERIFIABLE with one of these codes without reproducing it, so it asserts nothing: the contract stores no chain or registry data from it (`block_time` 0), it indexes no range, opens no gate and never becomes the latest verdict over a filing that read its block. Every other result is recomputed by each validator in full and must be identical.
 - Views: `get_check(id)`, `list_checks(start, count)`, `latest_verdict(batch)`, `is_matched(batch)`, `list_claimed(start, count)`, `get_stats()`, `get_rules()`, `rate_status(sender)`.
 
 ## OffsetGate

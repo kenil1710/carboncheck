@@ -1157,9 +1157,15 @@ class TestGate(Base):
         self.w.call(self.cc, "recheck", 1, BLOCK + 1, sender=FILER)
         self.gate_refused("NOT_MATCHED_MISMATCH")
 
-    def test_unverifiable_recheck_blocks_gate(self):
+    def test_transport_unverifiable_recheck_does_not_block_gate(self):
         self.file()
         stub.WEB.down.add(F.RPC_A)
+        self.w.call(self.cc, "recheck", 1, BLOCK + 1, sender=FILER)
+        self.assertEqual(self.claim()["check_id"], 1)
+
+    def test_read_unverifiable_recheck_blocks_gate(self):
+        self.file()
+        F.set_batch(1000, S1000, 5000, owner=F.addr(77), block=BLOCK + 1)
         self.w.call(self.cc, "recheck", 1, BLOCK + 1, sender=FILER)
         self.gate_refused("NOT_MATCHED_UNVERIFIABLE")
 

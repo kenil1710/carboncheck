@@ -536,16 +536,17 @@ def unv(stage: str, code: str, why: str, extra: typing.Any = None) -> dict:
 
 def judge_chain(raw: dict) -> dict:
     """Decoded on-chain facts {"batch": {...}} or a final result (rules 1-3)."""
+    at = {"batch": {"block_hash": raw.get("hash", ""), "block_time": raw.get("time", 0)}}
     try:
         nft = decode_nft(raw["nft"]) if raw.get("nft") is not None else None
     except ReadFailed:
-        return unv("chain", U_NO_BATCH, "nftList() answered something that is not a batch")
+        return unv("chain", U_NO_BATCH, "nftList() answered something that is not a batch", at)
     if nft is None or raw.get("owner") is None:
-        return unv("chain", U_NO_BATCH, "the batch contract has no such token at this block")
+        return unv("chain", U_NO_BATCH, "the batch contract has no such token at this block", at)
     try:
         owner = _addr_word(_hexdata(raw["owner"]), 0)
     except ReadFailed:
-        return unv("chain", U_NO_BATCH, "ownerOf() answered something that is not an address")
+        return unv("chain", U_NO_BATCH, "ownerOf() answered something that is not an address", at)
     st = nft["status"]
     name = BATCH_STATUS[st] if st < len(BATCH_STATUS) else "status " + str(st)
     batch = {"serial": nft["serial"], "quantity": nft["quantity"], "status": name, "pv_id": nft["pv_id"],
@@ -788,6 +789,11 @@ class CarbonCheck(gl.contract.Contract):
         r = gl.vm.run_nondet(leader, validator)
         if not isinstance(r, dict) or r.get("verdict") not in (MATCHED, MISMATCH, UNVERIFIABLE):
             r = unv("internal", U_INTERNAL, "no readable result")
+        if r["verdict"] == UNVERIFIABLE and r.get("code") in TRANSPORT_CODES:
+            # validators accepted this without reproducing it, so it asserts
+            # nothing: keep no chain or registry data from it (block_time stays
+            # 0, and latest_verdict skips it)
+            r = unv(str(r.get("stage", ""))[:20], str(r["code"]), str(r.get("why", ""))[:400])
         b = r.get("batch") if isinstance(r.get("batch"), dict) else {}
         v = r.get("verra") if isinstance(r.get("verra"), dict) else {}
         verdict = str(r["verdict"])
@@ -924,7 +930,10 @@ class CarbonCheck(gl.contract.Contract):
         """The filing that read the NEWEST Polygon block for the batch (ties
         cannot happen: one filing per batch and block). A filing pinned to an
         older block can never mask a newer one, whatever order they were
-        filed in. Carries both "as of" times: the fetch and the block."""
+        filed in. Filings that read no block (a source did not answer, or the
+        block was not finalized: block_time 0) assert nothing and are skipped
+        while any filing read its block. Carries both "as of" times: the
+        fetch and the block."""
         ids = (self.by_batch.get(u64(int(batch_id))) or "").split(",") if int(batch_id) > 0 else []
         last = None
         counts = {MATCHED: 0, MISMATCH: 0, DOUBLE_CLAIMED: 0, UNVERIFIABLE: 0}
@@ -933,7 +942,8 @@ class CarbonCheck(gl.contract.Contract):
                 continue
             c = self.checks[u64(int(s))]
             counts[c.verdict] += 1
-            if last is None or (int(c.block), int(c.check_id)) > (int(last.block), int(last.check_id)):
+            if last is None or (int(c.block_time) > 0, int(c.block), int(c.check_id)) > \
+                    (int(last.block_time) > 0, int(last.block), int(last.check_id)):
                 last = c
         if last is None:
             return {"batch_id": int(batch_id), "verdict": "NONE", "check_id": 0, "filed_at": 0,

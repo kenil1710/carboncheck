@@ -12,7 +12,8 @@ const { studioDevnet } = require("genlayer-js/chains");
 const { transactionsStatusNumberToName } = require("genlayer-js/types");
 const root = new URL("..", import.meta.url).pathname;
 const client = createClient({ chain: studioDevnet });
-const dep = JSON.parse(readFileSync(root + "deployments.json", "utf8")).contracts;
+const depDoc = JSON.parse(readFileSync(root + "deployments.json", "utf8"));
+const dep = depDoc.contracts;
 const git = (...a) => execFileSync("git", ["-C", root, ...a]).toString().trim();
 const sh = (cmd, args, cwd = root) => spawnSync(cmd, args, { cwd, encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -105,7 +106,7 @@ const seedsDef = JSON.parse(read("test/seeds.json")).seeds;
   for (const s of seedsOn.seeds) for (const k of ["owner", "tco2", "filer"]) if (s[k]) polygon.add(s[k]);
   for (const s of seedsOn.seeds) if (s.verra?.beneficiary?.startsWith("0x")) polygon.add(s.verra.beneficiary);
   const roles = existsSync(root + "test/.accounts.json") ? Object.values(JSON.parse(read("test/.accounts.json"))).map((r) => r.address) : [];
-  const known = new Set([...Object.values(dep).map((d) => d.address), ...Object.values(dep).map((d) => d.deployer), ...toucan, ...probes, ...polygon, ...roles,
+  const known = new Set([...Object.values(dep).map((d) => d.address), ...(depDoc.superseded ?? []).map((d) => d.address), ...Object.values(dep).map((d) => d.deployer), ...toucan, ...probes, ...polygon, ...roles,
     "0xCcAcC6099debD9654C6814fCb800431Ef7549b10", "0x25bdff8db8d80971935a7f38a0cf31dec62f7696"].map((a) => a.toLowerCase()));
   const stray = [];
   for (const [f, t] of Object.entries(text)) for (const m of t.matchAll(/(?<![0-9a-fA-Fx])0x[0-9a-fA-F]{40}(?![0-9a-fA-F])/g)) if (!known.has(m[0].toLowerCase())) stray.push(`${f}: ${m[0]}`);

@@ -205,6 +205,59 @@ class A4Stale(Base):
         self.assertEqual((c["as_of"], c["block"]), (F.NOW_ISO, BLOCK))
 
 
+class A4bGriefing(Base):
+    """Found on chain by the first demo run: a filing at a block a day ahead
+    (BLOCK_NOT_FINALIZED) became "latest" and closed the gate for an honest
+    MATCHED batch. Results that read no block now assert nothing."""
+
+    def claim(self):
+        return self.w.call(self.gate, "claim_offset", 1000, "x", sender=USER)
+
+    def test_future_block_cannot_mask_matched(self):
+        self.file()
+        r = self.file(block=F.FIN + 43200, sender=FILER2)
+        self.assertEqual(r["code"], "BLOCK_NOT_FINALIZED")
+        self.assertEqual(self.w.view(self.cc, "latest_verdict", 1000)["verdict"], "MATCHED")
+        self.assertEqual(self.claim()["check_id"], 1)
+
+    def test_transport_failure_at_newer_block_cannot_mask(self):
+        self.file()
+        n = F.new_block(F.NOW)
+        stub.WEB.down.add(CC.VERRA_SEARCH)
+        self.assertEqual(self.file(block=n, sender=FILER2)["code"], "VERRA_UNAVAILABLE")
+        self.assertTrue(self.w.view(self.cc, "is_matched", 1000))
+
+    def test_forged_transport_result_stores_no_chain_data(self):
+        self.file()
+        n = F.new_block(F.NOW)
+        forged = CC.unv("verra", "VERRA_UNAVAILABLE", "x", {"batch": {"block_time": 10 ** 10, "serial": "FORGED", "start": 1, "end": 10 ** 12}})
+        stub.FORGE["payload"] = forged
+        r = self.file(block=n, sender=FILER2)
+        stub.FORGE["payload"] = None
+        c = self.w.view(self.cc, "get_check", r["check_id"])
+        self.assertEqual((c["block_time"], c["serial"], c["unit_end"]), (0, "", 0))
+        self.assertEqual(self.w.view(self.cc, "latest_verdict", 1000)["check_id"], 1)
+
+    def test_only_unread_filings_still_reported(self):
+        stub.WEB.down.add(F.RPC_B)
+        self.file()
+        lv = self.w.view(self.cc, "latest_verdict", 1000)
+        self.assertEqual((lv["verdict"], lv["code"], lv["block_time"]), ("UNVERIFIABLE", "RPC_UNAVAILABLE", 0))
+
+    def test_not_found_batch_keeps_its_block(self):
+        r = self.file(token_id=2000)
+        self.assertEqual(self.w.view(self.cc, "get_check", r["check_id"])["block_time"], F.BLOCK_TS)
+
+    def test_newer_read_unverifiable_does_mask(self):
+        """A newer block that WAS read and shows the batch no longer Confirmed
+        is real information and must close the gate."""
+        self.file()
+        n = F.new_block(F.NOW)
+        F.set_batch(1000, S1000, 5000, status=3, block=n)
+        self.assertEqual(self.file(block=n, sender=FILER2)["code"], "BATCH_NOT_CONFIRMED")
+        self.assertFalse(self.w.view(self.cc, "is_matched", 1000))
+
+
 # ---------------------------------------------------------------- A5 gate bypass
 
 class A5GateBypass(Base):
