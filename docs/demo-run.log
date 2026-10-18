@@ -1,0 +1,113 @@
+
+=== demo run 2026-10-18T07:40:01.189Z  CarbonCheckDemo 0x019B01259A30467de7bdbFD2125e3d3CE00B08a1  OffsetGateDemo 0x98eF81498Dc820fAb2Db56F112573a6256688348  CarbonCheck 0x959Fe7E8Fb95Ae349895B1557AeF7916E3eCf413 ===
+pinned Polygon block 95735900 (finalized on both RPCs)
+[2026-10-18T07:40:21.493Z] PASS verdict MATCHED (batch 1000, project 191, 5000 units)
+    demo -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",1000,95735900])
+    tx 0x92e1e8f83b37c930d797569e33b428eb417213c1385a3ac8cb1d27500821e66b status ACCEPTED 20.3s
+    => {"check_id":1,"code":"ALL_FIELDS_MATCH","verdict":"MATCHED","why":"Retired on Verra; 5000 units, project VCS-191, vintage 2009-01-01..2009-12-31 match the batch and its TCO2"}
+[2026-10-18T07:40:38.818Z] PASS verdict MISMATCH (batch 68: serial is project 1477, its TCO2 is VCS-981)
+    demo -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",68,95735900])
+    tx 0x5d3b0cceba4a562029d90616b8baa13477164d47e166466384a1a9ad20bb08fb status ACCEPTED 17.3s
+    => {"check_id":2,"code":"SERIAL_PROJECT_MISMATCH","verdict":"MISMATCH","why":"the serial names project VCS-1477, the TCO2 says VCS-981"}
+[2026-10-18T07:41:09.966Z] PASS verdict UNVERIFIABLE BATCH_NOT_FRACTIONALIZED (batch 3: Confirmed, held by a wallet)
+    demo -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",3,95735900])
+    tx 0xd2239f252528d82ee43f01dd573ee470788c4f7230154e540fc9e44e71f43080 status ACCEPTED 31.1s
+    => {"check_id":3,"code":"BATCH_NOT_FRACTIONALIZED","verdict":"UNVERIFIABLE","why":"the batch is held by 0x25bdff8db8d80971935a7f38a0cf31dec62f7696, not by its TCO2"}
+[2026-10-18T07:41:23.771Z] PASS refusal RATE_LIMITED (4th filing by one sender in 10 min)
+    demo -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",10,95735900])
+    tx 0xa85d6777fec732dba7faffc99d7193d12b8ca2a0a47c9c96c4f37bd95fe68f44 status ACCEPTED 13.8s
+    => REVERTED REFUSED: RATE_LIMITED_UNTIL_1792309811
+[2026-10-18T07:41:43.279Z] PASS verdict MATCHED (batch 9, project 535, units 48565492..48567831)
+    demo2 -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",9,95735900])
+    tx 0xd47acfd21ccbc31e58d3292fd07a41bc31cc11e9b0a2565e3b179f16caeee5cf status ACCEPTED 19.5s
+    => {"check_id":4,"code":"ALL_FIELDS_MATCH","verdict":"MATCHED","why":"Retired on Verra; 2340 units, project VCS-535, vintage 2014-01-01..2014-12-31 match the batch and its TCO2"}
+[2026-10-18T07:41:59.530Z] PASS verdict MATCHED (batch 23, project 535, units 48567832..48595400: TOUCHES batch 9, no overlap)
+    demo2 -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",23,95735900])
+    tx 0x9b3e76891ee027425dc8cb6a115e95a0701bd0c1881df1fb779cdfc9eaf956b3 status ACCEPTED 16.2s
+    => {"check_id":5,"code":"ALL_FIELDS_MATCH","verdict":"MATCHED","why":"Retired on Verra; 27569 units, project VCS-535, vintage 2014-01-01..2014-12-31 match the batch and its TCO2"}
+[2026-10-18T07:42:15.123Z] PASS demo range (project 1418, units 10851600..10851700, labelled; DEMO deployment only)
+    demo2 -> demo_claim_range([1418,10851600,10851700,"claimed on another registry"])
+    tx 0x6391aca5cf973f8ce3f8694c7e3a3ec6d0644ec70e0c30366a40f9ac1b54d377 status ACCEPTED 15.6s
+    => {"claimed_id":4,"project":1418,"unit_end":10851700,"unit_start":10851600}
+[2026-10-18T07:42:32.369Z] PASS verdict DOUBLE_CLAIMED (batch 2, project 1418, unit 10851650 inside the claimed range)
+    demo2 -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",2,95735900])
+    tx 0x1008852ebff722f532e854a99a95cfabf793bd3f622df807eb77e4c73a4e9063 status ACCEPTED 17.2s
+    => {"check_id":6,"code":"RANGE_ALREADY_CLAIMED","verdict":"DOUBLE_CLAIMED","why":"project 1418 units 10851650..10851650 overlap units 10851600..10851700 already MATCHED for DEMO range 'claimed on another registry'"}
+[2026-10-18T07:42:47.591Z] PASS verdict UNVERIFIABLE VERRA_NOT_FOUND (batch 1213: exact serial not on Verra)
+    filer -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",1213,95735900])
+    tx 0xb6ac19290e1a835131dfb3ccaa089b092852af4edddddf996e49754b01e9900d status ACCEPTED 15.2s
+    => {"check_id":7,"code":"VERRA_NOT_FOUND","verdict":"UNVERIFIABLE","why":"the Verra registry lists no retired or active units with this exact serial"}
+[2026-10-18T07:43:04.687Z] PASS verdict UNVERIFIABLE SERIAL_UNPARSABLE (batch 7: two serials joined by a comma)
+    filer -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",7,95735900])
+    tx 0x9a6ace10ae25ed44ffd9dbad28f6660ee95481d0e156048cd2679c99331d0eeb status ACCEPTED 17.1s
+    => {"check_id":8,"code":"SERIAL_UNPARSABLE","verdict":"UNVERIFIABLE","why":"the batch serial is not a well-formed Verra VCU serial"}
+[2026-10-18T07:43:28.676Z] PASS verdict UNVERIFIABLE BATCH_NOT_CONFIRMED (batch 244: Rejected)
+    filer -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",244,95735900])
+    tx 0xdf6ddc49299a37f9ae283731be3e3e5546489d8bd9b6d865dd80beb29ce5b961 status ACCEPTED 24.0s
+    => {"check_id":9,"code":"BATCH_NOT_CONFIRMED","verdict":"UNVERIFIABLE","why":"the batch is Rejected, not Confirmed"}
+[2026-10-18T07:43:47.008Z] PASS verdict UNVERIFIABLE BATCH_NOT_FOUND (batch 2000 does not exist)
+    filer2 -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",2000,95735900])
+    tx 0x20dc3dbb02e8f179559ff07f67e718b80cc83c35c8746efbbde748702f27a030 status ACCEPTED 18.3s
+    => {"check_id":10,"code":"BATCH_NOT_FOUND","verdict":"UNVERIFIABLE","why":"the batch contract has no such token at this block"}
+[2026-10-18T07:44:03.648Z] PASS verdict UNVERIFIABLE BLOCK_NOT_FINALIZED (a block a day ahead)
+    filer2 -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",1000,95779100])
+    tx 0xd1a8bea832970bcb569e9e3c8c1c5c48f5df19547b8a237a664d68811d29c73f status ACCEPTED 16.6s
+    => {"check_id":11,"code":"BLOCK_NOT_FINALIZED","verdict":"UNVERIFIABLE","why":"polygon.drpc.org has finalized only up to block 95736059"}
+[2026-10-18T07:44:17.802Z] PASS recheck (batch 1000 again at the next block: a fresh as-of verdict)
+    filer2 -> recheck([1,95735901])
+    tx 0x400af6589a64f8f2242fc075b9c552e340542828438e3619a8bdca691c5d27d8 status ACCEPTED 14.1s
+    => {"check_id":12,"code":"ALL_FIELDS_MATCH","verdict":"MATCHED","why":"Retired on Verra; 5000 units, project VCS-191, vintage 2009-01-01..2009-12-31 match the batch and its TCO2"}
+[2026-10-18T07:44:30.906Z] PASS refusal NOT_TOUCAN_BATCH_CONTRACT (batch 1000's TCO2 passed as the batch contract)
+    filer3 -> file_check(["0xCcAcC6099debD9654C6814fCb800431Ef7549b10",1000,95735900])
+    tx 0x7018ac6fe97e606946e76c3f0f3b8f4a1037e134f082a69e45b55e5495227558 status ACCEPTED 13.1s
+    => REVERTED REFUSED: NOT_TOUCAN_BATCH_CONTRACT
+[2026-10-18T07:44:44.217Z] PASS refusal BAD_TOKEN_ID (0)
+    filer3 -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",0,95735900])
+    tx 0x6e0737c6bd5a4840c86ec786bb550ba63d24968c13f35e9b92f449c63b3bae1c status ACCEPTED 13.3s
+    => REVERTED REFUSED: BAD_TOKEN_ID
+[2026-10-18T07:44:57.325Z] PASS refusal BAD_BLOCK (before Toucan existed)
+    filer3 -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",1000,100])
+    tx 0xbef71d7e90866d29376c64e6beac7034ba3308e048d1762ea9afc479c847b47c status ACCEPTED 13.1s
+    => REVERTED REFUSED: BAD_BLOCK
+[2026-10-18T07:45:10.361Z] PASS refusal DUPLICATE (batch 1000 at the same block)
+    filer3 -> file_check(["0x8A4d7458dDe3023A3B24225D62087701A88b09DD",1000,95735900])
+    tx 0x7e34d59bc97b4d46537bd3d30a8e803574c6a83b1b8c55d009229764d9c3d137 status ACCEPTED 13.0s
+    => REVERTED REFUSED: DUPLICATE_OF_1
+[2026-10-18T07:45:22.109Z] PASS refusal NO_SUCH_CHECK (recheck of check 999)
+    filer3 -> recheck([999,95735902])
+    tx 0xbdd64ba8b5ced5985bfaedc4d65cc6d2d33c77346e03ab0c427473b710ac2b5f status ACCEPTED 11.7s
+    => REVERTED REFUSED: NO_SUCH_CHECK
+[2026-10-18T07:45:35.005Z] PASS refusal DEMO_ONLY (demo_claim_range on the canonical CarbonCheck)
+    filer3 -> demo_claim_range([191,1,2,"should be refused"])
+    tx 0x8fd15bb1fd4752c7d9a00193727536b230ed84ff47c97576ae715aa2f8fe542a status ACCEPTED 12.9s
+    => REVERTED REFUSED: DEMO_ONLY
+[2026-10-18T07:45:47.346Z] PASS gate ALLOW (batch 1000: latest verdict MATCHED, fresh)
+    demo -> claim_offset([1000,"demo offset, 5000 t"])
+    tx 0x31a1387eb7b9b093aa36ac701ba7aaf499e9d54811dd51824f4d8cc2cde8f72e status ACCEPTED 12.3s
+    => {"age_s":89,"batch_id":1000,"check_id":12,"claim_id":1}
+[2026-10-18T07:45:59.892Z] PASS gate REFUSE ALREADY_CLAIMED (batch 1000 a second time)
+    demo2 -> claim_offset([1000,"again"])
+    tx 0xc65dd0c44df88bd15a1d3c58ed77c163d18ab4d2c1f8c5b268850346b54429c0 status ACCEPTED 12.5s
+    => REVERTED REFUSED: ALREADY_CLAIMED_IN_1
+[2026-10-18T07:46:11.776Z] PASS gate REFUSE NOT_MATCHED_MISMATCH (batch 68)
+    demo -> claim_offset([68,"x"])
+    tx 0xbdf58e5e10d46791c9387cff75a2b893f37749d027d79e32a898654ecf486836 status ACCEPTED 11.9s
+    => REVERTED REFUSED: NOT_MATCHED_MISMATCH
+[2026-10-18T07:46:23.471Z] PASS gate REFUSE NOT_MATCHED_DOUBLE_CLAIMED (batch 2)
+    demo -> claim_offset([2,"x"])
+    tx 0xafbefe831970c5fc12f19d65f6b801bbcab32a74c7a1fd45f5c982beedd6a2f4 status ACCEPTED 11.7s
+    => REVERTED REFUSED: NOT_MATCHED_DOUBLE_CLAIMED
+[2026-10-18T07:46:36.966Z] PASS gate REFUSE NOT_MATCHED_UNVERIFIABLE (batch 3)
+    demo -> claim_offset([3,"x"])
+    tx 0xe43236359a5e58681e2349f6378e7114fd310a0daa6d9b9529be526d2a481ebe status ACCEPTED 13.5s
+    => REVERTED REFUSED: NOT_MATCHED_UNVERIFIABLE
+[2026-10-18T07:46:50.263Z] PASS gate REFUSE NO_VERDICT (batch 10: never filed)
+    demo -> claim_offset([10,"x"])
+    tx 0x29427a2c79b55c045ae0fcaa6c5dbd1f270a9dfe615f2038d80bacdff024e86d status ACCEPTED 13.3s
+    => REVERTED REFUSED: NO_VERDICT
+waiting 330 s until batch 23's MATCHED (check 5) is older than 600 s
+[2026-10-18T07:52:35.774Z] PASS gate REFUSE STALE_VERDICT (batch 23: MATCHED, but older than max_age 600 s)
+    demo2 -> claim_offset([23,"late"])
+    tx 0xb1b552fe520b3793c2423a6cc86dc08180ccde9e595b459738c6dbaed342805a status ACCEPTED 14.8s
+    => REVERTED REFUSED: STALE_VERDICT
+=== demo run done: ALL PASS ===
