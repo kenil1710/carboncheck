@@ -5,6 +5,71 @@
   "explorer": "https://explorer-studio-dev.genlayer.com/",
   "contracts": {
     "CarbonCheck": {
+      "address": "0x959Fe7E8Fb95Ae349895B1557AeF7916E3eCf413",
+      "deploy_tx": "0xbb58456a873670374cac8a6bc7f685eb9af49bfef5c2e1c28e672ac2a4a18b19",
+      "file": "contracts/CarbonCheck.py",
+      "commit": "93c92dbc03666bf5fbbb1e5825c73b3f1d835a79",
+      "bytes": 43111,
+      "sha256": "25e652965e1fc4c9940d06f29d1c56bfbd6d632ad66efcd29065015159936996",
+      "constructor_args": [
+        "CANONICAL",
+        5,
+        3600
+      ],
+      "deployer": "0x6E9586761dee0B7ccefd08556Db09Fc150a4Fd93",
+      "deployed_at": "2026-10-18T07:39:26.441Z",
+      "mode": "CANONICAL"
+    },
+    "CarbonCheckDemo": {
+      "address": "0x019B01259A30467de7bdbFD2125e3d3CE00B08a1",
+      "deploy_tx": "0x1669ff184e35701509675a8a2ea08ccfa5e3147e543baee4a4b84188ba758ca7",
+      "file": "contracts/CarbonCheck.py",
+      "commit": "93c92dbc03666bf5fbbb1e5825c73b3f1d835a79",
+      "bytes": 43111,
+      "sha256": "25e652965e1fc4c9940d06f29d1c56bfbd6d632ad66efcd29065015159936996",
+      "constructor_args": [
+        "DEMO",
+        3,
+        600
+      ],
+      "deployer": "0x6E9586761dee0B7ccefd08556Db09Fc150a4Fd93",
+      "deployed_at": "2026-10-18T07:39:36.056Z",
+      "mode": "DEMO"
+    },
+    "OffsetGate": {
+      "address": "0x7BF9f7b62f65214f9B65647799507FC9A452409B",
+      "deploy_tx": "0xa8599546d74153e6418dee31ad373e819df28698585358a04d642bc2626168f9",
+      "file": "contracts/OffsetGate.py",
+      "commit": "93c92dbc03666bf5fbbb1e5825c73b3f1d835a79",
+      "bytes": 6756,
+      "sha256": "26923fbc428e4a6939c07fbd57a0ec22b5c15bc271b8cd4c28894ede6025303c",
+      "constructor_args": [
+        "0x959Fe7E8Fb95Ae349895B1557AeF7916E3eCf413",
+        2592000
+      ],
+      "deployer": "0x6E9586761dee0B7ccefd08556Db09Fc150a4Fd93",
+      "deployed_at": "2026-10-18T07:39:42.351Z",
+      "mode": "CANONICAL"
+    },
+    "OffsetGateDemo": {
+      "address": "0x98eF81498Dc820fAb2Db56F112573a6256688348",
+      "deploy_tx": "0x8f084df03ee258e4ccb5b3fc1fff3872fe3c686fd5424b40f2b9e48f4dd8a85e",
+      "file": "contracts/OffsetGate.py",
+      "commit": "93c92dbc03666bf5fbbb1e5825c73b3f1d835a79",
+      "bytes": 6756,
+      "sha256": "26923fbc428e4a6939c07fbd57a0ec22b5c15bc271b8cd4c28894ede6025303c",
+      "constructor_args": [
+        "0x019B01259A30467de7bdbFD2125e3d3CE00B08a1",
+        600
+      ],
+      "deployer": "0x6E9586761dee0B7ccefd08556Db09Fc150a4Fd93",
+      "deployed_at": "2026-10-18T07:39:51.323Z",
+      "mode": "DEMO"
+    }
+  },
+  "superseded": [
+    {
+      "name": "CarbonCheck",
       "address": "0x73b0d7575660b847fAee31eC032D067CFFB23CF8",
       "deploy_tx": "0xc59b46505cf73cd411bd766c96866e65c2d9ec3fce308e50ebe3068fe1d76c0e",
       "file": "contracts/CarbonCheck.py",
@@ -18,9 +83,12 @@
       ],
       "deployer": "0x6E9586761dee0B7ccefd08556Db09Fc150a4Fd93",
       "deployed_at": "2026-10-18T07:24:06.107Z",
-      "mode": "CANONICAL"
+      "mode": "CANONICAL",
+      "superseded_by": "0x959Fe7E8Fb95Ae349895B1557AeF7916E3eCf413",
+      "why": "A26: a BLOCK_NOT_FINALIZED filing at a future block masked a MATCHED at the gate (found by the first demo run)"
     },
-    "CarbonCheckDemo": {
+    {
+      "name": "CarbonCheckDemo",
       "address": "0xbc26F658AD3356B47B3530c0D1A530eCdEee3E41",
       "deploy_tx": "0x35f46bea38584937de7d4f056763e4de0540e47e5901d38b67d941d2a1f095b8",
       "file": "contracts/CarbonCheck.py",
@@ -34,9 +102,12 @@
       ],
       "deployer": "0x6E9586761dee0B7ccefd08556Db09Fc150a4Fd93",
       "deployed_at": "2026-10-18T07:24:15.879Z",
-      "mode": "DEMO"
+      "mode": "DEMO",
+      "superseded_by": "0x019B01259A30467de7bdbFD2125e3d3CE00B08a1",
+      "why": "A26: a BLOCK_NOT_FINALIZED filing at a future block masked a MATCHED at the gate (found by the first demo run)"
     },
-    "OffsetGate": {
+    {
+      "name": "OffsetGate",
       "address": "0xB78802fC27C977bE35faf92b4AF1e38E1C569f91",
       "deploy_tx": "0x9e66a70b60bf41fd94714c3bbf3d3e6b8d3c71b743722dfd39b8693f0435af49",
       "file": "contracts/OffsetGate.py",
@@ -49,9 +120,12 @@
       ],
       "deployer": "0x6E9586761dee0B7ccefd08556Db09Fc150a4Fd93",
       "deployed_at": "2026-10-18T07:24:21.658Z",
-      "mode": "CANONICAL"
+      "mode": "CANONICAL",
+      "superseded_by": "0x7BF9f7b62f65214f9B65647799507FC9A452409B",
+      "why": "A26: a BLOCK_NOT_FINALIZED filing at a future block masked a MATCHED at the gate (found by the first demo run)"
     },
-    "OffsetGateDemo": {
+    {
+      "name": "OffsetGateDemo",
       "address": "0x87116893e197473b26c1c3d4Cc9dA6E40C935e24",
       "deploy_tx": "0x8d10d8c2c95190650ec940b98e66de4efc693a7b92c97abbb72e6e4b7f612b38",
       "file": "contracts/OffsetGate.py",
@@ -64,7 +138,9 @@
       ],
       "deployer": "0x6E9586761dee0B7ccefd08556Db09Fc150a4Fd93",
       "deployed_at": "2026-10-18T07:24:30.670Z",
-      "mode": "DEMO"
+      "mode": "DEMO",
+      "superseded_by": "0x98eF81498Dc820fAb2Db56F112573a6256688348",
+      "why": "A26: a BLOCK_NOT_FINALIZED filing at a future block masked a MATCHED at the gate (found by the first demo run)"
     }
-  }
+  ]
 }
