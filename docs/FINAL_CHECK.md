@@ -1,11 +1,11 @@
 # Final check
 
-Run 2026-10-18T08:41:37.851Z by `tools/final_check.mjs` against commit `e204bd4135` and Studio Dev. **10/11 PASS.**
+Run 2026-10-18T08:49:28.010Z by `tools/final_check.mjs` against commit `4a9987deda` and Studio Dev. **11/11 PASS.**
 
 ## PASS: Source match: gen_getContractCode byte-identical to contracts/ at HEAD for every deployment, all from one commit, contracts/ unchanged since
 
 ```
-HEAD e204bd4135982d95486189674c678264a001664c
+HEAD 4a9987deda868ebc3b18d815896e48ace283b8b8
 CarbonCheck          0x959Fe7E8Fb95Ae349895B1557AeF7916E3eCf413  chain sha256 25e652965e1fc4c9940d06f29d1c56bfbd6d632ad66efcd29065015159936996  identical to HEAD  matches deployments.json  deploy commit 93c92dbc03  contracts/ unchanged since
 CarbonCheckDemo      0x019B01259A30467de7bdbFD2125e3d3CE00B08a1  chain sha256 25e652965e1fc4c9940d06f29d1c56bfbd6d632ad66efcd29065015159936996  identical to HEAD  matches deployments.json  deploy commit 93c92dbc03  contracts/ unchanged since
 OffsetGate           0x7BF9f7b62f65214f9B65647799507FC9A452409B  chain sha256 26923fbc428e4a6939c07fbd57a0ec22b5c15bc271b8cd4c28894ede6025303c  identical to HEAD  matches deployments.json  deploy commit 93c92dbc03  contracts/ unchanged since
@@ -112,7 +112,7 @@ marked POST-only (RPC / registry API endpoints, not pages): https://studio-dev.g
 ## PASS: All offline tests pass (200+)
 
 ```
-Ran 373 tests in 0.289s  OK
+Ran 373 tests in 0.296s  OK
 ```
 
 ## PASS: Docs: README sections (Scope, Rules, Addresses, How to verify), no hygiene-list word in README or docs/, SUBMISSION plain ASCII, title <= 100 and description <= 1000 with true counts, says code decides and no model does
@@ -121,8 +121,8 @@ Ran 373 tests in 0.289s  OK
 missing: none; files with a listed word: none (8 files); SUBMISSION ASCII: true; counts: Title 86/100, Description 809/1000; plain statement: true
 ```
 
-## FAIL: Git: keys never committed, no assistant attribution or assistant name in history or files
+## PASS: Git: keys never committed, no assistant attribution or assistant name in history or files
 
 ```
-commits touching test/.accounts.json: none; in messages: none; in files: docs/FINAL_CHECK.md
+commits touching test/.accounts.json: none; in messages: none; in files: none
 ```
